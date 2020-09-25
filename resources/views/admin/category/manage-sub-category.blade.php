@@ -1,0 +1,65 @@
+@extends('layouts.app')
+@section('content')
+<div class="content-header">
+                    <!-- leftside content header -->
+                    <div class="leftside-content-header">
+                        <ul class="breadcrumbs">
+                            <li><i class="fa fa-home" aria-hidden="true"></i><a href="{{ route('home') }}">Dashboard</a></li>
+                            <li><a href="javascript:avoid(0)">Categories</a></li>
+                            <li><a href="javascript:avoid(0)">All Sub-Categories</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+                <div class="row aimated fadeInUp">
+                <div class="row">
+                <div class="col-sm-12 col-md-8 col-md-offset-2">
+                    @include('includes.message')
+                     <div class="panel b-primary bt-md">
+                        <div class="panel-content">
+                            <div class="row">
+                                <div class="col-xs-6"><h4>Manage Sub-Category</4></div>
+                                <div class="col-xs-6 text-right">
+                                    <a href="{{ route('add-sub-category') }}" class="btn btn-primary">Add Sub-Category</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                <div class="table-responsive">
+                                <table id="basic-table" class="data-table table table-striped nowrap table-hover table-bordered" cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>SL. No.</th>
+                                        <th>Category > Sub-category</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @php($i =1)
+                                    @foreach($data as $row)
+                                    <tr>
+                                    <td>{{ $i }}</td>
+                                    <td>{{ $row->category->category }} > {{ $row->sub_cat }}</td>
+                                    <td>
+                                    <a href="{{ route('edit-sub-category',$row->id) }}" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></a>
+                                    <a href="{{ route('delete-sub-category',$row->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                    </tr>
+                                    @php($i++)
+                                    @endforeach
+                                    
+                                    </table>
+   
+                            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--STRIPE-->
+                </div>
+                </div>
+
+
+ @endsection
